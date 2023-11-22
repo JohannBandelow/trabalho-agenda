@@ -1,3 +1,0 @@
-/home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda/cmake-build-debug/CMakeFiles/trabalho_agenda.dir
-/home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda/cmake-build-debug/CMakeFiles/rebuild_cache.dir

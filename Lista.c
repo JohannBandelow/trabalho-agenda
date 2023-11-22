@@ -53,8 +53,6 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
     Evento evento;
     novo_evento(&evento, &data, &horario_ini, &horario_ini, descricao, local);
 
-    mostrar_evento(evento);
-
     insere_fim(p, &evento);
   }
 

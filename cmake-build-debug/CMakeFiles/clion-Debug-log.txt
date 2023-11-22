@@ -1,4 +1,0 @@
-/home/johann.bandelow@jv01.local/Downloads/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/johann.bandelow@jv01.local/Downloads/CLion-2023.2.2/clion-2023.2.2/bin/ninja/linux/x64/ninja -G Ninja -S /home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda -B /home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda/cmake-build-debug
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /home/johann.bandelow@jv01.local/udesc/EDA/trabalho-agenda/cmake-build-debug

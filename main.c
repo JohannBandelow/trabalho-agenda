@@ -5,6 +5,17 @@
 #include "Horario.h"
 #include "Lista.h"
 
+/*
+ * TODO:
+ * 1 -> Johann
+ * 2 -> Feito
+ * 3 -> Erick
+ * 4 ->
+ * 5 ->
+ * 6 ->
+ *
+ * */
+
 void removerEvento() {
   int opcaoRemover;
   printf("Escolha a opção de remoção:\n");
