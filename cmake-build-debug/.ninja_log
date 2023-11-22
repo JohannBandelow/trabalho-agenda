@@ -1,0 +1,23 @@
+# ninja log v5
+0	20	1700425520086115317	CMakeFiles/trabalho_agenda.dir/Data.c.o	4d31bccde68b1398
+0	28	1700425520098115206	CMakeFiles/trabalho_agenda.dir/main.c.o	391e7abda64d9a4f
+0	29	1700425520098115206	CMakeFiles/trabalho_agenda.dir/Horario.c.o	b3c61ddf53a2cb79
+0	12	1700425556285781963	CMakeFiles/trabalho_agenda.dir/main.c.o	391e7abda64d9a4f
+0	15	1700425556289781926	CMakeFiles/trabalho_agenda.dir/Evento.c.o	52f9a1d98990502a
+0	17	1700425576413598624	CMakeFiles/trabalho_agenda.dir/Evento.c.o	52f9a1d98990502a
+1	32	1700425576425598515	CMakeFiles/trabalho_agenda.dir/Lista.c.o	488f9a1b4557000c
+0	12	1700425859647142094	CMakeFiles/trabalho_agenda.dir/Data.c.o	4d31bccde68b1398
+0	15	1700425859651142060	CMakeFiles/trabalho_agenda.dir/Evento.c.o	52f9a1d98990502a
+0	15	1700425859651142060	CMakeFiles/trabalho_agenda.dir/Horario.c.o	b3c61ddf53a2cb79
+0	34	1700425859671141894	CMakeFiles/trabalho_agenda.dir/Lista.c.o	488f9a1b4557000c
+34	49	1700425859683141793	trabalho_agenda	9e48c466e930d072
+0	27	1700426025513782890	CMakeFiles/trabalho_agenda.dir/Lista.c.o	488f9a1b4557000c
+27	40	1700426025529782762	trabalho_agenda	9e48c466e930d072
+1	37	1700426195452430632	CMakeFiles/trabalho_agenda.dir/Lista.c.o	488f9a1b4557000c
+37	52	1700426195468430506	trabalho_agenda	9e48c466e930d072
+0	16	1700426274815809740	CMakeFiles/trabalho_agenda.dir/main.c.o	391e7abda64d9a4f
+16	32	1700426274827809646	trabalho_agenda	9e48c466e930d072
+0	15	1700426853561767881	CMakeFiles/trabalho_agenda.dir/main.c.o	391e7abda64d9a4f
+0	15	1700426853561767881	CMakeFiles/trabalho_agenda.dir/Evento.c.o	52f9a1d98990502a
+0	33	1700426853581767397	CMakeFiles/trabalho_agenda.dir/Lista.c.o	488f9a1b4557000c
+33	48	1700426853597767009	trabalho_agenda	9e48c466e930d072
