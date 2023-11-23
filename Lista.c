@@ -36,25 +36,28 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   // Lê os eventos do arquivo
   for (int i = 0; i < quantidadeEventos; i++) {
     int dia, mes, ano, hora_ini, min_ini, hora_fim, min_fim;
-    char descricao[50], local[50];
+    char *descricao = malloc(sizeof(char) * 50);
+    char *local = malloc(sizeof(char) * 50);
 
     fscanf(f, "%d/%d/%d %d:%d %d:%d %49[^,], %49[^\n]", &dia, &mes, &ano,
            &hora_ini, &min_ini, &hora_fim, &min_fim, descricao, local);
 
-    Data data;
-    inicializa_data(&data, dia, mes, ano);
+    Data *data = malloc(sizeof(Data));
+    inicializa_data(data, dia, mes, ano);
 
-    Horario horario_ini;
-    inicializa_hora(&horario_ini, hora_ini, min_ini);
+    Horario *horario_ini = malloc(sizeof(Horario));
+    inicializa_hora(horario_ini, hora_ini, min_ini);
 
-    Horario horario_fim;
-    inicializa_hora(&horario_fim, hora_fim, min_fim);
+    Horario *horario_fim = malloc(sizeof(Horario));
+    inicializa_hora(horario_fim, hora_fim, min_fim);
 
     Evento evento;
-    novo_evento(&evento, &data, &horario_ini, &horario_ini, descricao, local);
+    novo_evento(&evento, data, horario_ini, horario_ini, descricao, local);
 
     insere_fim(p, &evento);
   }
+
+  fclose(f);
 
   return 1;
 }

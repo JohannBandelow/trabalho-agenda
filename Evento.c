@@ -32,7 +32,7 @@ void mostrar_evento(void *evento) {
   printf("\n");
 }
 
-long int data_para_timestamp(Data data, Horario horario) {
+long long data_para_timestamp(Data data, Horario horario) {
   struct tm tm_data = {0};
 
   tm_data.tm_year = data.ano - 1900;
@@ -49,9 +49,9 @@ int compara_data(void *daLista, void *aInserir) {
   Evento *eventoLista = (Evento *)daLista;
   Evento *eventoInserir = (Evento *)aInserir;
 
-  long int timestampEventoDaLista =
+  long long timestampEventoDaLista =
       data_para_timestamp(*eventoLista->data, *eventoLista->hora_inicial);
-  long int timestampEventoAInserir =
+  long long timestampEventoAInserir =
       data_para_timestamp(*eventoInserir->data, *eventoInserir->hora_inicial);
 
   if (timestampEventoDaLista > timestampEventoAInserir)
