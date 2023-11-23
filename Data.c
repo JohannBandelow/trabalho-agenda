@@ -1,7 +1,6 @@
 #include "Data.h"
 
 int inicializa_data(Data *data, int dia, int mes, int ano) {
-
   if (dia > 31 || dia < 1)
     return ERRO_DIA_INVALIDO;
 
