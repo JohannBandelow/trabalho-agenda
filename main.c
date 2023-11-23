@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "Data.h"
 #include "Evento.h"
 #include "Horario.h"
 #include "Lista.h"
@@ -43,35 +44,35 @@ void removerEvento() {
   }
 }
 
-void cadastrarNovoEvento() {
+void cadastrar_novo_evento() {
   Evento novoEvento;
-  Data data;
-  Horario hora_ini;
-  Horario hora_fim;
-  printf("Informe a data (DD MM AAAA): ");
-  scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-  printf("Informe a hora de início (HH MM): ");
-  scanf("%d %d", &hora_ini.hora, &hora_ini.minuto);
-  printf("Informe a hora de fim (HH MM): ");
-  scanf("%d %d", &hora_fim.hora, &hora_fim.minuto);
+  Data *data = malloc(sizeof(Data));
+  Horario *hora_ini = malloc(sizeof(Horario));
+  Horario *hora_fim = malloc(sizeof(Horario));
 
-  novoEvento.data = &data;
-  novoEvento.hora_final = &hora_fim;
-  novoEvento.hora_inicial = &hora_ini;
+  int dia, mes, ano;
+  printf("Informe a data (DD MM AAAA): ");
+  scanf("%d %d %d", &dia, &mes, &ano);
+  inicializa_data(data, dia, mes, ano);
+
+  int hora, minuto;
+  printf("Informe a hora de início (HH MM): ");
+  scanf("%d %d", &hora, &minuto);
+  inicializa_hora(hora_ini, hora, minuto);
+
+  printf("Informe a hora de fim (HH MM): ");
+  scanf("%d %d", &hora, &minuto);
+  inicializa_hora(hora_fim, hora, minuto);
 
   printf("Informe a descrição (até 50 caracteres): ");
   scanf(" %[^\n]", novoEvento.descricao);
   printf("Informe o local (até 50 caracteres): ");
   scanf(" %[^\n]", novoEvento.local);
-
-  // inserirEvento(&lista, novoEvento);
 }
 
 int main(int argc, char const *argv[]) {
   Lista *lista = malloc(sizeof(Lista) + sizeof(Evento));
   int result = le_arquivo("entrada.txt", lista);
-
-  mostra_lista(*lista, &mostrar_evento);
 
   if (result == 0) { // Arquivo nâo existe
     inicializa_lista(lista, sizeof(Evento));
@@ -93,7 +94,7 @@ int main(int argc, char const *argv[]) {
 
     switch (opcao) {
     case 1: {
-      cadastrarNovoEvento();
+      cadastrar_novo_evento();
       printf("Evento cadastrado com sucesso!\n");
       break;
     }
