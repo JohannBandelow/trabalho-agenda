@@ -32,17 +32,17 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   fscanf(f, "%d", &quantidadeEventos);
 
   inicializa_lista(p, sizeof(Evento));
-
+  int i;
   // Lê os eventos do arquivo
-  for (int i = 0; i < quantidadeEventos; i++) {
+  for (i = 0; i < quantidadeEventos; i++) {
     int dia, mes, ano, hora_ini, min_ini, hora_fim, min_fim;
     char descricao[50], local[50];
 
     fscanf(f, "%d/%d/%d %d:%d %d:%d %49[^,], %49[^\n]", &dia, &mes, &ano,
            &hora_ini, &min_ini, &hora_fim, &min_fim, descricao, local);
 
-    Data data;
-    inicializa_data(&data, dia, mes, ano);
+    Data* data = malloc(sizeof(Data));
+    inicializa_data(data, dia, mes, ano);
 
     Horario horario_ini;
     inicializa_hora(&horario_ini, hora_ini, min_ini);
@@ -51,12 +51,29 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
     inicializa_hora(&horario_fim, hora_fim, min_fim);
 
     Evento evento;
-    novo_evento(&evento, &data, &horario_ini, &horario_ini, descricao, local);
+    novo_evento(&evento, data, &horario_ini, &horario_ini, descricao, local);
 
     insere_fim(p, &evento);
   }
 
   return 1;
+}
+
+void mostrar_todos_os_eventos_da_data(Lista* l,Data dia){
+	int i = 0;
+	Elemento* aux = l->cabeca;
+	while(aux!= NULL){		
+		Evento* evento = aux->info;
+		if(comparada_data(*evento->data,dia)){
+			i++;
+			printf("\nEvento %d\n",i);
+			mostrar_evento(evento);
+			printf("\n-------------------------------");
+		}
+		aux = aux->proximo;
+	}
+	if(i == 0)
+		printf("Nao ha eventos nesta data!");
 }
 
 void inicializa_lista(Lista *p, int t) {

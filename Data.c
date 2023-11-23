@@ -17,3 +17,11 @@ int inicializa_data(Data *data, int dia, int mes, int ano) {
 
   return 0;
 }
+
+int comparada_data(Data data,Data data_a_ser_comparada){
+	int retorno = 0;
+	if(data.ano == data_a_ser_comparada.ano && data.mes == data_a_ser_comparada.mes &&
+		data.dia == data_a_ser_comparada.dia)
+		return 1;
+	return retorno;
+}

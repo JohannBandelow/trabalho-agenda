@@ -100,7 +100,7 @@ int main(int argc, char const *argv[]) {
       Data data;
       printf("Informe a data (DD MM AAAA): ");
       scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-      // mostrarEventosPorData(lista, data);
+	  mostrar_todos_os_eventos_da_data(&lista, data);
       break;
     }
     case 4: {
