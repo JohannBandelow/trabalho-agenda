@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Data.h"
 #include "Evento.h"
 #include "Horario.h"
 #include "Lista.h"
@@ -10,8 +9,8 @@
  * TODO:
  * 1 -> Johann
  * 2 -> Feito
- * 3 -> Erick
- * 4 ->
+ * 3 -> Feito
+ * 4 -> Erick
  * 5 ->
  * 6 ->
  *
@@ -84,13 +83,11 @@ void cadastrar_novo_evento(Lista *lista) {
 }
 
 int main(int argc, char const *argv[]) {
-  Lista *lista = malloc(sizeof(Lista) + sizeof(Evento));
+  Lista *lista = malloc(sizeof(Lista));
   int result = le_arquivo("entrada.txt", lista);
 
-  if (result == 0) { // Arquivo nâo existe
+  if (result == 0) // Arquivo nâo existe
     inicializa_lista(lista, sizeof(Evento));
-    printf("Arquivo não encontrado");
-  }
 
   int opcao;
 
@@ -118,7 +115,7 @@ int main(int argc, char const *argv[]) {
       Data data;
       printf("Informe a data (DD MM AAAA): ");
       scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-      mostrar_todos_os_eventos_da_data(lista, data);
+      mostrar_todos_os_eventos_da_data(*lista, data);
       break;
     }
     case 4: {
