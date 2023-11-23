@@ -64,9 +64,9 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   return 1;
 }
 
-void mostrar_todos_os_eventos_da_data(Lista* l,Data dia){
+void mostrar_todos_os_eventos_da_data(Lista l,Data dia){
 	int i = 0;
-	Elemento* aux = l->cabeca;
+	Elemento* aux = l.cabeca;
 	while(aux!= NULL){		
 		Evento* evento = aux->info;
 		if(comparada_data(*evento->data,dia)){

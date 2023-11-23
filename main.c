@@ -68,15 +68,11 @@ void cadastrarNovoEvento() {
 }
 
 int main(int argc, char const *argv[]) {
-  Lista *lista = malloc(sizeof(Lista) + sizeof(Evento));
-  int result = le_arquivo("entrada.txt", lista);
+  Lista lista;
+  int result = le_arquivo("entrada.txt", &lista);
 
-  mostra_lista(*lista, &mostrar_evento);
-
-  if (result == 0) { // Arquivo nâo existe
-    inicializa_lista(lista, sizeof(Evento));
-    printf("Arquivo não encontrado");
-  }
+  if (result == 0) // Arquivo nâo existe
+    inicializa_lista(&lista, sizeof(Evento));
 
   int opcao;
 
@@ -98,13 +94,13 @@ int main(int argc, char const *argv[]) {
       break;
     }
     case 2:
-      mostra_lista(*lista, mostrar_evento);
+      mostra_lista(lista, mostrar_evento);
       break;
     case 3: {
       Data data;
       printf("Informe a data (DD MM AAAA): ");
       scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-	  mostrar_todos_os_eventos_da_data(&lista, data);
+	  mostrar_todos_os_eventos_da_data(lista, data);
       break;
     }
     case 4: {
