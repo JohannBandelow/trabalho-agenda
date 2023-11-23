@@ -1,6 +1,7 @@
 // Constantes de erro
 #define ERRO_LISTA_VAZIA	-1
 #define ERRO_POS_INVALIDA	-2
+#include "Data.h"
 
 // Elemento de lista
 typedef struct ele {
@@ -28,6 +29,7 @@ int insere_ordem( Lista *p, void *info , int (*compara)(void*, void*) );
 void mostra_lista( Lista l, void (*mostra)(void *) );
 void limpa_lista( Lista *l );
 int le_arquivo( char *nome_arquivo, Lista *lista );
+void mostrar_todos_os_eventos_da_data(Lista* l,Data dia);
 
 int conta_elementos( Lista l ); // Fun��o in�til na pr�tica, pois temos o campo 'qtd'.
 

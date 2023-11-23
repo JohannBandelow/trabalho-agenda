@@ -16,7 +16,6 @@ int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
                 Horario *hora_fim, char *descricao, char *local);
 
 void mostrar_evento(void *evento);
-
 int compara_data(Evento *evento);
 
 #endif
