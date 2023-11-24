@@ -4,6 +4,7 @@
 #include "Evento.h"
 #include "Horario.h"
 #include "Lista.h"
+#include "Utils.h"
 
 /*
  * TODO:
@@ -17,12 +18,6 @@
  * */
 
 // Função para limpar o buffer de entrada
-void limpar_buffer() {
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-    ;
-}
-
 void removerEvento() {
   int opcaoRemover;
   printf("Escolha a opção de remoção:\n");
@@ -50,38 +45,6 @@ void removerEvento() {
   }
 }
 
-void cadastrar_novo_evento(Lista *lista) {
-  Evento *novoEvento = malloc(sizeof(Evento));
-  Data *data = malloc(sizeof(Data));
-  Horario *hora_ini = malloc(sizeof(Horario));
-  Horario *hora_fim = malloc(sizeof(Horario));
-
-  int dia, mes, ano;
-  printf("Informe a data (DD MM AAAA): ");
-  scanf("%d %d %d", &dia, &mes, &ano);
-  inicializa_data(data, dia, mes, ano);
-  novoEvento->data = data;
-
-  int hora, minuto;
-  printf("Informe a hora de início (HH MM): ");
-  scanf("%d %d", &hora, &minuto);
-  inicializa_hora(hora_ini, hora, minuto);
-  novoEvento->hora_inicial = hora_ini;
-
-  printf("Informe a hora de fim (HH MM): ");
-  scanf("%d %d", &hora, &minuto);
-  inicializa_hora(hora_fim, hora, minuto);
-  novoEvento->hora_final = hora_fim;
-
-  char temp[50];
-  printf("Informe a descrição (até 50 caracteres): ");
-  scanf(" %[^\n]", novoEvento->descricao);
-  printf("Informe o local (até 50 caracteres): ");
-  scanf(" %[^\n]", novoEvento->local);
-
-  insere_ordem(lista, novoEvento, compara_data);
-}
-
 int main(int argc, char const *argv[]) {
   Lista *lista = malloc(sizeof(Lista));
   int result = le_arquivo("entrada.txt", lista);
@@ -104,13 +67,13 @@ int main(int argc, char const *argv[]) {
 
     switch (opcao) {
     case 1: {
-      cadastrar_novo_evento(lista);
-      printf("Evento cadastrado com sucesso!\n");
+      criar_novo_evento(lista);
       break;
     }
-    case 2:
+    case 2: {
       mostra_lista(*lista, mostrar_evento);
       break;
+    }
     case 3: {
       Data data;
       printf("Informe a data (DD MM AAAA): ");
@@ -136,7 +99,7 @@ int main(int argc, char const *argv[]) {
       break;
     }
 
-    limpar_buffer();
+    limpa_buffer();
   } while (opcao != 6);
 
   return 0;

@@ -5,10 +5,12 @@
 #define ERRO_MINUTO_INVALIDO -1002;
 
 typedef struct {
-    int hora;
-    int minuto;
+  int hora;
+  int minuto;
 } Horario;
 
 int inicializa_hora(Horario *h, int hora, int minuto);
+int conflita_hora(Horario h1_ini, Horario h1_fim, Horario h2_ini,
+                  Horario h2_fim);
 
 #endif

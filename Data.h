@@ -13,4 +13,5 @@ typedef struct {
 
 int inicializa_data(Data *data, int dia, int mes, int ano);
 int comparada_data(Data data,Data data_a_ser_comparada);
+int mesmo_dia(Data data1, Data data2);
 #endif

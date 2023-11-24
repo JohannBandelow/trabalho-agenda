@@ -42,7 +42,6 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
     fscanf(f, "%d/%d/%d %d:%d %d:%d %49[^,], %49[^\n]", &dia, &mes, &ano,
            &hora_ini, &min_ini, &hora_fim, &min_fim, descricao, local);
 
-
     Data *data = malloc(sizeof(Data));
     inicializa_data(data, dia, mes, ano);
 
@@ -64,21 +63,21 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   return 1;
 }
 
-void mostrar_todos_os_eventos_da_data(Lista l,Data dia){
-	int i = 0;
-	Elemento* aux = l.cabeca;
-	while(aux!= NULL){		
-		Evento* evento = aux->info;
-		if(comparada_data(*evento->data,dia)){
-			i++;
-			printf("\nEvento %d\n",i);
-			mostrar_evento(evento);
-			printf("\n-------------------------------");
-		}
-		aux = aux->proximo;
-	}
-	if(i == 0)
-		printf("Nao ha eventos nesta data!");
+void mostrar_todos_os_eventos_da_data(Lista l, Data dia) {
+  int i = 0;
+  Elemento *aux = l.cabeca;
+  while (aux != NULL) {
+    Evento *evento = aux->info;
+    if (comparada_data(*evento->data, dia)) {
+      i++;
+      printf("\nEvento %d\n", i);
+      mostrar_evento(evento);
+      printf("\n-------------------------------");
+    }
+    aux = aux->proximo;
+  }
+  if (i == 0)
+    printf("Nao ha eventos nesta data!");
 }
 
 void inicializa_lista(Lista *p, int t) {
@@ -227,9 +226,10 @@ int modifica_valor(Lista l, void *info, int pos) {
 }
 
 void mostra_lista(Lista l, void (*mostra)(void *)) {
-  if (lista_vazia(l))
+
+  if (lista_vazia(l)) {
     printf("Lista vazia!\n");
-  else {
+  } else {
     printf("Dados da lista (%d elementos):\n", l.qtd);
     Elemento *p = l.cabeca;
     int cont = 0; // cont � o �ndice do elemento dentro da lista.

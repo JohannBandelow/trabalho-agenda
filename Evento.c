@@ -1,7 +1,11 @@
 #include "Evento.h"
 #include "Data.h"
 #include "Horario.h"
+#include "Lista.h"
+#include "Utils.h"
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
@@ -13,6 +17,100 @@ int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
   evento->local = local;
 
   return 1;
+}
+
+int validar_conflitos_data(Lista *lista, Evento *evento) {
+  if (lista_vazia(*lista))
+    printf("Lista vazia!\n");
+  else {
+    Elemento *p = lista->cabeca;
+    int cont = 0;
+    while (p != NULL) {
+      Evento *e = (Evento *)p->info;
+
+      if (mesmo_dia(*evento->data, *e->data)) {
+        if (conflita_hora(*e->hora_inicial, *e->hora_final,
+                          *evento->hora_inicial, *evento->hora_final)) {
+          printf("Há um conflito de hora com o evento:\n");
+          mostrar_evento(e);
+          print_line_separator();
+          return 0;
+        }
+      }
+      p = p->proximo;
+      cont++;
+    }
+  }
+
+  return 1;
+}
+
+void criar_novo_evento(Lista *lista) {
+  Evento *novoEvento = malloc(sizeof(Evento));
+  Data *data = malloc(sizeof(Data));
+  Horario *hora_ini = malloc(sizeof(Horario));
+  Horario *hora_fim = malloc(sizeof(Horario));
+  int erro;
+  int valid = 0;
+
+  while (!valid) {
+    int dia, mes, ano;
+    printf("Informe a data (DD MM AAAA): ");
+    scanf("%d %d %d", &dia, &mes, &ano);
+    erro = inicializa_data(data, dia, mes, ano);
+    if (erro != 0) {
+      continue;
+    }
+
+    novoEvento->data = data;
+
+    int hora, minuto;
+    printf("Informe a hora de início (HH MM): ");
+    scanf("%d %d", &hora, &minuto);
+    erro = inicializa_hora(hora_ini, hora, minuto);
+    if (erro != 0) {
+      continue;
+    }
+
+    novoEvento->hora_inicial = hora_ini;
+
+    printf("Informe a hora de fim (HH MM): ");
+    scanf("%d %d", &hora, &minuto);
+    erro = inicializa_hora(hora_fim, hora, minuto);
+    if (erro != 0) {
+      continue;
+    }
+
+    novoEvento->hora_final = hora_fim;
+
+    char *local = malloc(sizeof(char) * 50);
+    char *descricao = malloc(sizeof(char) * 50);
+    printf("Informe a descrição (até 50 caracteres): ");
+    scanf(" %[^\n]", descricao);
+    printf("Informe o local (até 50 caracteres): ");
+    scanf(" %[^\n]", local);
+
+    novoEvento->local = local;
+    novoEvento->descricao = descricao;
+
+    limpa_buffer();
+
+    valid = validar_conflitos_data(lista, novoEvento);
+
+    if (!valid) {
+      int opc;
+      printf("Deseja continuar cadastrando esse evento? 1-Sim 2-Não");
+      scanf("%d", &opc);
+      if (opc == 2) {
+        printf("Cancelado registro de evento!");
+        print_line_separator();
+        return;
+      }
+    }
+  }
+
+  insere_ordem(lista, novoEvento, compara_data);
+  printf("Evento cadastrado com sucesso!\n");
 }
 
 void mostrar_evento(void *evento) {
