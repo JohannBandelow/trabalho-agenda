@@ -28,7 +28,7 @@ void remover_evento(Lista *lista) {
     Data data;
     printf("Informe a data (DD MM AAAA): ");
     scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-    // removerEventosPorData(&lista, data);
+    remover_eventos_por_data(lista, data);
     printf("Eventos removidos com sucesso!\n");
   } else if (opcaoRemover == 1) {
     Data data;
