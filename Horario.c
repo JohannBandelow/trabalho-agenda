@@ -22,6 +22,14 @@ int inicializa_hora(Horario *h, int hora, int minuto) {
   return 0;
 }
 
+int hora_dentro_de_escopo(Horario hora, Horario escopo, Horario escopo_fim) {
+  int hora_min = (hora.hora * 60) + hora.minuto;
+  int escopo_min = (escopo.hora * 60) + escopo.minuto;
+  int escopo_fim_min = (escopo_fim.hora * 60) + escopo_fim.minuto;
+
+  return (hora_min > escopo_min) && (hora_min < escopo_fim_min);
+}
+
 int conflita_hora(Horario h1_ini, Horario h1_fim, Horario h2_ini,
                   Horario h2_fim) {
 

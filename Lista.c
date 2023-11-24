@@ -54,7 +54,7 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
 
     Evento evento;
 
-    novo_evento(&evento, data, horario_ini, horario_ini, descricao, local);
+    novo_evento(&evento, data, horario_ini, horario_fim, descricao, local);
 
     insere_fim(p, &evento);
   }
@@ -121,6 +121,36 @@ int remover_eventos_por_data(Lista *lista, Data data) {
       void *removido = malloc(sizeof(Evento));
       remove_pos(lista, removido, i);
       aux = prox;
+    } else {
+      // Se o elemento não for removido, apenas avança para o próximo
+      i++;
+      aux = aux->proximo;
+    }
+  }
+
+  if (i == 0)
+    printf("Nao ha eventos nesta data!");
+
+  return 0;
+}
+
+int remover_eventos_por_data_hora(Lista *lista, Data data, Horario horario) {
+  int i = 0;
+  Elemento *aux = lista->cabeca;
+  Evento *e = malloc(sizeof(Evento));
+  Elemento *prox;
+
+  while (aux != NULL) {
+    e = (Evento *)aux->info;
+    prox = aux->proximo;
+
+    if (compara_data(*e->data, data) &&
+        hora_dentro_de_escopo(horario, *e->hora_inicial, *e->hora_final)) {
+
+      void *removido = malloc(sizeof(Evento));
+      remove_pos(lista, removido, i);
+
+      return 0; // Só vai apagar um tem mesmo
     } else {
       // Se o elemento não for removido, apenas avança para o próximo
       i++;

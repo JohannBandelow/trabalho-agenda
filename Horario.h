@@ -12,5 +12,6 @@ typedef struct {
 int inicializa_hora(Horario *h, int hora, int minuto);
 int conflita_hora(Horario h1_ini, Horario h1_fim, Horario h2_ini,
                   Horario h2_fim);
+int hora_dentro_de_escopo(Horario hora, Horario escopo, Horario escopo_fim);
 
 #endif

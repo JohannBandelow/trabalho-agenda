@@ -12,8 +12,8 @@
  * 2 -> Feito
  * 3 -> Feito
  * 4 -> Erick
- * 5 ->
- * 6 -> (salvar no arquivo) Johann
+ * 5 -> Johann
+ * 6 -> Feito
  *
  * */
 
@@ -39,7 +39,7 @@ void removerEvento(Lista *lista) {
     scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
     printf("Informe a hora de início (HH MM): ");
     scanf("%d %d", &hora.hora, &hora.minuto);
-    // removerEventoPorDataHora(&lista, data, hora);
+    remover_eventos_por_data_hora(lista, data, hora);
   } else {
     printf("Opção inválida.\n");
   }
