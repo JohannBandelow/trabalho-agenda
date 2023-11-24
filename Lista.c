@@ -2,6 +2,7 @@
 #include "Data.h"
 #include "Evento.h"
 #include "Horario.h"
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -109,15 +110,24 @@ void mostrar_todos_os_eventos_da_data(Lista l, Data dia) {
 int remover_eventos_por_data(Lista *lista, Data data) {
   int i = 0;
   Elemento *aux = lista->cabeca;
+  Evento *evento = malloc(sizeof(Evento));
+  Elemento *prox;
+
   while (aux != NULL) {
-    Evento *evento = aux->info;
+    evento = (Evento *)aux->info;
+    prox = aux->proximo;
+
     if (compara_data(*evento->data, data)) {
+      void *removido = malloc(sizeof(Evento));
+      remove_pos(lista, removido, i);
+      aux = prox;
+    } else {
+      // Se o elemento não for removido, apenas avança para o próximo
       i++;
-      Evento *ignore = malloc(sizeof(Evento));
-      remove_pos(lista, ignore, i);
+      aux = aux->proximo;
     }
-    aux = aux->proximo;
   }
+
   if (i == 0)
     printf("Nao ha eventos nesta data!");
 
