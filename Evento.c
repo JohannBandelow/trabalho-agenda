@@ -4,8 +4,10 @@
 #include "Lista.h"
 #include "Utils.h"
 
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
@@ -93,7 +95,16 @@ void criar_novo_evento(Lista *lista) {
     scanf(" %[^\n]", local);
 
     novoEvento->local = local;
+    if (strlen(local) > 50) {
+      printf("Tamanho maior que 50 caracteres para o campo local!");
+      continue;
+    }
+
     novoEvento->descricao = descricao;
+    if (strlen(descricao) > 50) {
+      printf("Tamanho maior que 50 caracteres para o campo descricao!");
+      continue;
+    }
 
     valid = validar_conflitos_data(lista, novoEvento);
 
