@@ -64,6 +64,23 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   return 1;
 }
 
+void mostrar_todos_os_eventos_por_descricao(Lista l, char desc[]){
+	int i = 0;
+	Elemento* aux = l.cabeca;
+	while(aux!= NULL){		
+		Evento* evento = aux->info;
+		if(strcmp(desc,evento->descricao) == 0){
+			i++;
+			printf("\nEvento %d\n",i);
+			mostrar_evento(evento);
+			printf("\n-------------------------------");
+		}
+		aux = aux->proximo;
+	}
+	if(i == 0)
+		printf("Nao ha eventos com esta descricao!");
+}
+
 void mostrar_todos_os_eventos_da_data(Lista l,Data dia){
 	int i = 0;
 	Elemento* aux = l.cabeca;

@@ -18,10 +18,10 @@
 
 void removerEvento() {
   int opcaoRemover;
-  printf("Escolha a opção de remoção:\n");
+  printf("Escolha a opcao de remocao:\n");
   printf("1. Remover todos os eventos de uma data\n");
   printf("2. Remover um evento por data e hora inicial\n");
-  printf("Escolha uma opção: ");
+  printf("Escolha uma opcao: ");
   scanf("%d", &opcaoRemover);
 
   if (opcaoRemover == 0) {
@@ -35,7 +35,7 @@ void removerEvento() {
     Horario hora;
     printf("Informe a data (DD MM AAAA): ");
     scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-    printf("Informe a hora de início (HH MM): ");
+    printf("Informe a hora de inicio (HH MM): ");
     scanf("%d %d", &hora.hora, &hora.minuto);
     // removerEventoPorDataHora(&lista, data, hora);
   } else {
@@ -81,7 +81,7 @@ int main(int argc, char const *argv[]) {
     printf("1. Cadastrar novo evento\n");
     printf("2. Mostrar todos os eventos\n");
     printf("3. Mostrar eventos por data\n");
-    printf("4. Mostrar eventos por descrição\n");
+    printf("4. Mostrar eventos por descricao\n");
     printf("5. Remover evento\n");
     printf("6. Sair\n");
     printf("Escolha uma opção: ");
@@ -107,7 +107,7 @@ int main(int argc, char const *argv[]) {
       char descricao[50];
       printf("Informe a descrição: ");
       scanf(" %[^\n]", descricao);
-      // mostrarEventosPorDescricao(lista, descricao);
+      mostrar_todos_os_eventos_por_descricao(lista, descricao);
       break;
     }
     case 5: {
