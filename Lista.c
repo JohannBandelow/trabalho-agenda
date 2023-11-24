@@ -63,6 +63,32 @@ int le_arquivo(char *nome_arquivo, Lista *p) {
   return 1;
 }
 
+int salva_no_arquivo(char *nome_arquivo, Lista *lista) {
+  FILE *arquivo = fopen(nome_arquivo, "w");
+
+  if (arquivo == NULL)
+    return -1;
+
+  Elemento *atual = lista->cabeca;
+
+  fprintf(arquivo, "%d\n", lista->qtd);
+
+  while (atual != NULL) {
+    Evento *evento = (Evento *)atual->info;
+
+    fprintf(arquivo, "%d/%d/%d %d:%d %d:%d %s, %s\n", evento->data->dia,
+            evento->data->mes, evento->data->ano, evento->hora_inicial->hora,
+            evento->hora_inicial->minuto, evento->hora_final->hora,
+            evento->hora_final->minuto, evento->descricao, evento->local);
+
+    atual = atual->proximo;
+  }
+
+  fclose(arquivo);
+
+  return 0;
+}
+
 void mostrar_todos_os_eventos_da_data(Lista l, Data dia) {
   int i = 0;
   Elemento *aux = l.cabeca;

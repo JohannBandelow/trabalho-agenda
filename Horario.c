@@ -4,12 +4,12 @@
 int inicializa_hora(Horario *h, int hora, int minuto) {
 
   if (hora > 24 || hora < 0) {
-    printf("Hora inválida!");
+    printf("Hora inválida!\n");
     return ERRO_HORA_INVALIDA;
   }
 
   if (minuto > 60 || minuto < 0) {
-    printf("Minuto inválido!");
+    printf("Minuto inválido!\n");
     return ERRO_MINUTO_INVALIDO;
   }
 

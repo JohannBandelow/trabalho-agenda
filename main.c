@@ -8,12 +8,12 @@
 
 /*
  * TODO:
- * 1 -> Johann
+ * 1 -> Feito
  * 2 -> Feito
  * 3 -> Feito
  * 4 -> Erick
  * 5 ->
- * 6 ->
+ * 6 -> (salvar no arquivo) Johann
  *
  * */
 
@@ -93,13 +93,13 @@ int main(int argc, char const *argv[]) {
       break;
     }
     case 6:
+      salva_no_arquivo("entrada.txt", lista);
       break;
     default:
       printf("Opção inválida.\n");
       break;
     }
 
-    limpa_buffer();
   } while (opcao != 6);
 
   return 0;

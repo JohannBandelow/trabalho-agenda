@@ -33,6 +33,7 @@ void mostra_lista(Lista l, void (*mostra)(void *));
 void limpa_lista(Lista *l);
 int le_arquivo(char *nome_arquivo, Lista *lista);
 void mostrar_todos_os_eventos_da_data(Lista l, Data dia);
+int salva_no_arquivo(char *nome_arquivo, Lista *lista);
 
 int conta_elementos(
     Lista l); // Fun��o in�til na pr�tica, pois temos o campo 'qtd'.

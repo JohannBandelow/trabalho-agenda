@@ -20,9 +20,7 @@ int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
 }
 
 int validar_conflitos_data(Lista *lista, Evento *evento) {
-  if (lista_vazia(*lista))
-    printf("Lista vazia!\n");
-  else {
+  if (!lista_vazia(*lista)) {
     Elemento *p = lista->cabeca;
     int cont = 0;
     while (p != NULL) {
@@ -31,6 +29,7 @@ int validar_conflitos_data(Lista *lista, Evento *evento) {
       if (mesmo_dia(*evento->data, *e->data)) {
         if (conflita_hora(*e->hora_inicial, *e->hora_final,
                           *evento->hora_inicial, *evento->hora_final)) {
+          print_line_separator();
           printf("Há um conflito de hora com o evento:\n");
           mostrar_evento(e);
           print_line_separator();
@@ -52,6 +51,9 @@ void criar_novo_evento(Lista *lista) {
   Horario *hora_fim = malloc(sizeof(Horario));
   int erro;
   int valid = 0;
+
+  print_line_separator();
+  printf("Criando novo evento:\n");
 
   while (!valid) {
     int dia, mes, ano;
@@ -93,13 +95,11 @@ void criar_novo_evento(Lista *lista) {
     novoEvento->local = local;
     novoEvento->descricao = descricao;
 
-    limpa_buffer();
-
     valid = validar_conflitos_data(lista, novoEvento);
 
     if (!valid) {
       int opc;
-      printf("Deseja continuar cadastrando esse evento? 1-Sim 2-Não");
+      printf("Deseja cadastrar outro evento? 1-Sim 2-Não\n");
       scanf("%d", &opc);
       if (opc == 2) {
         printf("Cancelado registro de evento!");
@@ -109,6 +109,7 @@ void criar_novo_evento(Lista *lista) {
     }
   }
 
+  limpa_buffer();
   insere_ordem(lista, novoEvento, compara_data);
   printf("Evento cadastrado com sucesso!\n");
 }

@@ -3,17 +3,17 @@
 
 int inicializa_data(Data *data, int dia, int mes, int ano) {
   if (dia > 31 || dia < 1) {
-    printf("Dia inválido");
+    printf("Dia inválido!\n");
     return ERRO_DIA_INVALIDO;
   }
 
   if (ano < 0) {
-    printf("Ano inválido");
+    printf("Ano inválido!\n");
     return ERRO_ANO_INVALIDO;
   }
 
   if (mes < 1 || mes > 12) {
-    printf("Mes inválido");
+    printf("Mes inválido!\n");
     return ERRO_MES_INVALIDO;
   }
 

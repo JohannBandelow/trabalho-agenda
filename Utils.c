@@ -5,7 +5,6 @@ void print_line_separator() {
 }
 
 void limpa_buffer() {
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
+  while (getchar() != '\n')
     ;
 }
