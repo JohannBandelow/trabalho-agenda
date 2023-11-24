@@ -18,7 +18,7 @@
  * */
 
 // Função para limpar o buffer de entrada
-void removerEvento() {
+void removerEvento(Lista *lista) {
   int opcaoRemover;
   printf("Escolha a opção de remoção:\n");
   printf("1. Remover todos os eventos de uma data\n");
@@ -26,13 +26,13 @@ void removerEvento() {
   printf("Escolha uma opção: ");
   scanf("%d", &opcaoRemover);
 
-  if (opcaoRemover == 0) {
+  if (opcaoRemover == 1) {
     Data data;
     printf("Informe a data (DD MM AAAA): ");
     scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-    // removerEventosPorData(&lista, data);
+    remover_eventos_por_data(lista, data);
     printf("Eventos removidos com sucesso!\n");
-  } else if (opcaoRemover == 1) {
+  } else if (opcaoRemover == 2) {
     Data data;
     Horario hora;
     printf("Informe a data (DD MM AAAA): ");
@@ -89,7 +89,7 @@ int main(int argc, char const *argv[]) {
       break;
     }
     case 5: {
-      removerEvento();
+      removerEvento(lista);
       break;
     }
     case 6:

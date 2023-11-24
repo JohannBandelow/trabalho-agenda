@@ -18,7 +18,7 @@ int novo_evento(Evento *evento, Data *data, Horario *hora_ini,
 
 void mostrar_evento(void *evento);
 
-int compara_data(void *daLista, void *aInserir);
+int compara_data_ordem(void *daLista, void *aInserir);
 
 void criar_novo_evento(Lista *lista);
 

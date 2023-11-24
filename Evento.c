@@ -121,7 +121,7 @@ void criar_novo_evento(Lista *lista) {
   }
 
   limpa_buffer();
-  insere_ordem(lista, novoEvento, compara_data);
+  insere_ordem(lista, novoEvento, compara_data_ordem);
   printf("Evento cadastrado com sucesso!\n");
 }
 
@@ -155,7 +155,7 @@ long long data_para_timestamp(Data data, Horario horario) {
   return (long long)unix_timestamp * 1000;
 }
 
-int compara_data(void *daLista, void *aInserir) {
+int compara_data_ordem(void *daLista, void *aInserir) {
   Evento *eventoLista = (Evento *)daLista;
   Evento *eventoInserir = (Evento *)aInserir;
 

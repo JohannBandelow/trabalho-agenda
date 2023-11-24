@@ -94,7 +94,7 @@ void mostrar_todos_os_eventos_da_data(Lista l, Data dia) {
   Elemento *aux = l.cabeca;
   while (aux != NULL) {
     Evento *evento = aux->info;
-    if (comparada_data(*evento->data, dia)) {
+    if (compara_data(*evento->data, dia)) {
       i++;
       printf("\nEvento %d\n", i);
       mostrar_evento(evento);
@@ -104,6 +104,24 @@ void mostrar_todos_os_eventos_da_data(Lista l, Data dia) {
   }
   if (i == 0)
     printf("Nao ha eventos nesta data!");
+}
+
+int remover_eventos_por_data(Lista *lista, Data data) {
+  int i = 0;
+  Elemento *aux = lista->cabeca;
+  while (aux != NULL) {
+    Evento *evento = aux->info;
+    if (compara_data(*evento->data, data)) {
+      i++;
+      Evento *ignore = malloc(sizeof(Evento));
+      remove_pos(lista, ignore, i);
+    }
+    aux = aux->proximo;
+  }
+  if (i == 0)
+    printf("Nao ha eventos nesta data!");
+
+  return 0;
 }
 
 void inicializa_lista(Lista *p, int t) {
