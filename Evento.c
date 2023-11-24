@@ -128,7 +128,7 @@ void criar_novo_evento(Lista *lista) {
 void mostrar_evento(void *evento) {
   Evento *castEvent = (Evento *)evento;
 
-  printf("Descrição: ");
+  printf("Descricao: ");
   printf("%s", castEvent->descricao);
   printf("\n");
   printf("Data: %d/%d/%d \n", castEvent->data->dia, castEvent->data->mes,

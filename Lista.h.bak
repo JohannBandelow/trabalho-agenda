@@ -5,7 +5,6 @@
 #define ERRO_LISTA_VAZIA -1
 #define ERRO_POS_INVALIDA -2
 #include "Data.h"
-#include "Horario.h"
 
 // Elemento de lista
 typedef struct ele {
@@ -19,6 +18,24 @@ typedef struct {
   int tamInfo, qtd;
 } Lista;
 
+<<<<<<< HEAD
+void inicializa_lista( Lista *p, int t );
+int lista_vazia ( Lista l );
+int insere_inicio( Lista *p, void *info );
+int remove_inicio( Lista *p, void *info );
+int insere_fim( Lista *p, void *info );
+int remove_fim( Lista *p, void *info );
+int insere_pos( Lista *p, void *info , int pos );
+int remove_pos( Lista *p, void *info , int pos );
+int le_valor( Lista l, void *info , int pos );
+int modifica_valor( Lista l, void *info , int pos );
+int insere_ordem( Lista *p, void *info , int (*compara)(void*, void*) );
+void mostra_lista( Lista l, void (*mostra)(void *) );
+void limpa_lista( Lista *l );
+int le_arquivo( char *nome_arquivo, Lista *lista );
+void mostrar_todos_os_eventos_da_data(Lista l,Data dia);
+void mostrar_todos_os_eventos_por_descricao(Lista l, char desc[]);
+=======
 void inicializa_lista(Lista *p, int t);
 int lista_vazia(Lista l);
 int insere_inicio(Lista *p, void *info);
@@ -36,8 +53,7 @@ int le_arquivo(char *nome_arquivo, Lista *lista);
 void mostrar_todos_os_eventos_da_data(Lista l, Data dia);
 int salva_no_arquivo(char *nome_arquivo, Lista *lista);
 int remover_eventos_por_data(Lista *lista, Data data);
-int remover_eventos_por_data_hora(Lista *lista, Data data, Horario horario);
-void mostrar_todos_os_eventos_por_descricao(Lista l, char desc[]);
+>>>>>>> 58603d274c06922d9913f635b0e74dfaa5851dfd
 
 int conta_elementos(
     Lista l); // Fun��o in�til na pr�tica, pois temos o campo 'qtd'.
