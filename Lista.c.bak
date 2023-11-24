@@ -97,8 +97,7 @@ void mostrar_todos_os_eventos_da_data(Lista l,Data dia){
 	}
 	if(i == 0)
 		printf("Nao ha eventos nesta data!");
-}
-
+=======
 int salva_no_arquivo(char *nome_arquivo, Lista *lista) {
   FILE *arquivo = fopen(nome_arquivo, "w");
 
@@ -167,6 +166,7 @@ int remover_eventos_por_data(Lista *lista, Data data) {
     printf("Nao ha eventos nesta data!");
 
   return 0;
+>>>>>>> 58603d274c06922d9913f635b0e74dfaa5851dfd
 }
 
 void inicializa_lista(Lista *p, int t) {
