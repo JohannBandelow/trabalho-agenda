@@ -5,6 +5,7 @@
 #define ERRO_LISTA_VAZIA -1
 #define ERRO_POS_INVALIDA -2
 #include "Data.h"
+#include "Horario.h"
 
 // Elemento de lista
 typedef struct ele {
@@ -35,6 +36,7 @@ int le_arquivo(char *nome_arquivo, Lista *lista);
 void mostrar_todos_os_eventos_da_data(Lista l, Data dia);
 int salva_no_arquivo(char *nome_arquivo, Lista *lista);
 int remover_eventos_por_data(Lista *lista, Data data);
+int remover_eventos_por_data_hora(Lista *lista, Data data, Horario horario);
 void mostrar_todos_os_eventos_por_descricao(Lista l, char desc[]);
 
 int conta_elementos(
