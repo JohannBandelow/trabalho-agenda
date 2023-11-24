@@ -13,13 +13,13 @@ void remover_evento(Lista *lista) {
   printf("Escolha uma opcao: ");
   scanf("%d", &opcaoRemover);
 
-  if (opcaoRemover == 0) {
+  if (opcaoRemover == 1) {
     Data data;
     printf("Informe a data (DD MM AAAA): ");
     scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
     remover_eventos_por_data(lista, data);
     printf("Eventos removidos com sucesso!\n");
-  } else if (opcaoRemover == 1) {
+  } else if (opcaoRemover == 2) {
     Data data;
     Horario hora;
     printf("Informe a data (DD MM AAAA): ");
@@ -55,7 +55,6 @@ int main(int argc, char const *argv[]) {
     switch (opcao) {
     case 1: {
       criar_novo_evento(lista);
-      printf("Evento cadastrado com sucesso!\n");
       break;
     }
     case 2:
@@ -80,6 +79,7 @@ int main(int argc, char const *argv[]) {
       break;
     }
     case 6:
+      salva_no_arquivo("entrada.txt", lista);
       break;
     default:
       printf("Opção inválida.\n");
