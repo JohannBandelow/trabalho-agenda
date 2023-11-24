@@ -5,17 +5,6 @@
 #include "Horario.h"
 #include "Lista.h"
 
-/*
- * TODO:
- * 1 -> Johann
- * 2 -> Feito
- * 3 -> Feito
- * 4 -> Feito
- * 5 -> Johann
- * 6 -> Feito
- *
- * */
-
 void remover_evento(Lista *lista) {
   int opcaoRemover;
   printf("Escolha a opcao de remocao:\n");
@@ -97,6 +86,9 @@ int main(int argc, char const *argv[]) {
       break;
     }
   } while (opcao != 6);
+
+  // Se o professor leu até aqui, saiba que esse código foi escrito com a ajuda
+  // de algumas cervejas
 
   return 0;
 }
